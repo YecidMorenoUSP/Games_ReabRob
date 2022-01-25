@@ -1,0 +1,385 @@
+[gd_scene load_steps=35 format=2]
+
+[ext_resource path="res://Assets3D/ufo/Ufo.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets3D/moonAstronaut/Luna.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets2D/Rayos/Rayos.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/kenney_particle_pack/magic_05.png" type="Texture" id=4]
+[ext_resource path="res://addons/kenney_particle_pack/star_05.png" type="Texture" id=5]
+[ext_resource path="res://Games/Game_UFO/Game_UFO.gd" type="Script" id=6]
+[ext_resource path="res://addons/kenney_particle_pack/smoke_08.png" type="Texture" id=7]
+[ext_resource path="res://addons/kenney_particle_pack/trace_06.png" type="Texture" id=8]
+[ext_resource path="res://addons/LineRenderer/LineRenderer.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets2D/Fondos/city1.png" type="Texture" id=10]
+[ext_resource path="res://Fonts/ThemeMarciano.tres" type="Theme" id=11]
+[ext_resource path="res://Fonts/Game Played.otf" type="DynamicFontData" id=12]
+
+[sub_resource type="SpatialMaterial" id=8]
+flags_transparent = true
+albedo_texture = ExtResource( 5 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+emission_shape = 2
+emission_box_extents = Vector3( 40, 40, 0 )
+flag_disable_z = true
+direction = Vector3( 1, 1, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 0.2
+initial_velocity_random = 0.06
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 1.0
+scale = 0.2
+scale_random = 0.5
+color = Color( 2, 2, 2, 1 )
+
+[sub_resource type="QuadMesh" id=7]
+size = Vector2( 2, 2 )
+
+[sub_resource type="ProceduralSky" id=2]
+radiance_size = 0
+sky_top_color = Color( 0.866667, 0.784314, 0.784314, 1 )
+sky_horizon_color = Color( 0, 0, 0, 1 )
+sky_curve = 0.0139882
+ground_bottom_color = Color( 0.368627, 0.368627, 0.368627, 1 )
+ground_horizon_color = Color( 0, 0, 0, 1 )
+ground_curve = 1.42025
+sun_latitude = 16.82
+sun_longitude = 130.91
+sun_curve = 0.229742
+texture_size = 0
+
+[sub_resource type="Environment" id=1]
+background_mode = 3
+background_sky = SubResource( 2 )
+background_color = Color( 0, 0.0745098, 0.12549, 1 )
+background_energy = 5.38
+glow_enabled = true
+
+[sub_resource type="SphereMesh" id=23]
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 10
+
+[sub_resource type="SpatialMaterial" id=24]
+flags_transparent = true
+albedo_color = Color( 1, 1, 1, 0 )
+
+[sub_resource type="SpatialMaterial" id=12]
+flags_transparent = true
+albedo_color = Color( 0.26, 0.42, 1.58, 1 )
+albedo_texture = ExtResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=10]
+emission_ring_axis = Vector3( 0, 0, 0 )
+gravity = Vector3( 0, -20, 0 )
+scale = 4.0
+scale_random = 0.21
+
+[sub_resource type="QuadMesh" id=11]
+
+[sub_resource type="SpatialMaterial" id=19]
+flags_transparent = true
+albedo_color = Color( 0.07, 2.91, 0.41, 1 )
+
+[sub_resource type="SpatialMaterial" id=22]
+flags_transparent = true
+albedo_color = Color( 10, 10, 10, 0.03 )
+
+[sub_resource type="SpatialMaterial" id=13]
+flags_transparent = true
+albedo_color = Color( 1, 1, 1, 0.305882 )
+albedo_texture = ExtResource( 7 )
+
+[sub_resource type="ParticlesMaterial" id=14]
+emission_shape = 2
+emission_box_extents = Vector3( 8, 3, 1 )
+direction = Vector3( 0, 0, 0 )
+gravity = Vector3( 0.04, 0, 0 )
+scale = 5.0
+scale_random = 0.26
+
+[sub_resource type="QuadMesh" id=15]
+
+[sub_resource type="SpatialMaterial" id=16]
+flags_transparent = true
+albedo_color = Color( 0.356863, 0.576471, 1, 1 )
+albedo_texture = ExtResource( 8 )
+
+[sub_resource type="ParticlesMaterial" id=17]
+emission_shape = 2
+emission_box_extents = Vector3( 4, 1, 1 )
+
+[sub_resource type="QuadMesh" id=18]
+
+[sub_resource type="Animation" id=20]
+resource_name = "move"
+length = 100.0
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:translation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -13, -0.25, 0, 0.25, 0, -23, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 100 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:translation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( -12.714, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath(".:translation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="DynamicFont" id=25]
+size = 35
+font_data = ExtResource( 12 )
+
+[sub_resource type="Animation" id=27]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=26]
+resource_name = "ping"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ), Vector2( 1, 1 ) ]
+}
+
+[node name="UFO_GAME" type="Spatial"]
+script = ExtResource( 6 )
+
+[node name="Stars" type="Particles" parent="."]
+transform = Transform( 0.976239, 0, 0.216695, 0, 1, 0, -0.216695, 0, 0.976239, 0, 0, -7.777 )
+material_override = SubResource( 8 )
+amount = 200
+lifetime = 100.0
+preprocess = 100.0
+visibility_aabb = AABB( -0.001, -0.001, -0.001, 0.002, 0.002, 0.002 )
+draw_order = 2
+process_material = SubResource( 6 )
+draw_pass_1 = SubResource( 7 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="Player" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25.6404, 10.8408, -2.22045e-15 )
+
+[node name="Marker" type="CSGMesh" parent="Player"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.957546, -9.809, 2.26559 )
+mesh = SubResource( 23 )
+material = SubResource( 24 )
+
+[node name="UFO" parent="Player/Marker" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.15095, 0.739425, -2.5588 )
+
+[node name="Particles" type="Particles" parent="Player/Marker/UFO"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849991, -2.19895, 0 )
+material_override = SubResource( 12 )
+amount = 5
+lifetime = 0.34
+process_material = SubResource( 10 )
+draw_pass_1 = SubResource( 11 )
+
+[node name="Reference" parent="Player" instance=ExtResource( 9 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 10, 0, 0 )
+material_override = SubResource( 19 )
+points = [  ]
+cornerSmooth = 0
+capSmooth = 0
+drawCaps = false
+drawCorners = false
+globalCoords = false
+scaleTexture = false
+
+[node name="PosPlayer" parent="Player" instance=ExtResource( 9 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 10, 0, 0 )
+material_override = SubResource( 22 )
+points = [  ]
+cornerSmooth = 0
+capSmooth = 0
+drawCaps = false
+drawCorners = false
+globalCoords = false
+scaleTexture = false
+
+[node name="UFO" parent="Player" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.104, 0 )
+visible = false
+
+[node name="Clouds" type="Spatial" parent="Player"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.34165, 8.46716, -4.15223e-14 )
+
+[node name="Cloud" type="Particles" parent="Player/Clouds"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.64177, -0.414776, 0 )
+material_override = SubResource( 13 )
+amount = 100
+lifetime = 20.0
+preprocess = 100.0
+visibility_aabb = AABB( -6.0191, -4, -4, 12.0382, 8, 8 )
+process_material = SubResource( 14 )
+draw_pass_1 = SubResource( 15 )
+
+[node name="Rain" type="Particles" parent="Player/Clouds"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.94512, -2.04099, 0 )
+material_override = SubResource( 16 )
+amount = 40
+lifetime = 5.0
+preprocess = 10.0
+explosiveness = 0.13
+randomness = 0.65
+process_material = SubResource( 17 )
+draw_pass_1 = SubResource( 18 )
+
+[node name="Rayos" parent="Player" instance=ExtResource( 3 )]
+transform = Transform( 1.8, 0, 0, 0, 2, 0, 0, 0, 1, 0, 1.0451, 0 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.997997, 0.00329317, 0.063175, 0, 0.998644, -0.0520571, -0.0632608, 0.0519528, 0.996644, 0, 0, 74.083 )
+current = true
+fov = 30.0
+size = 29.7152
+
+[node name="Moon" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.963083, 0, 0.269206, 0, 1, 0, -0.269206, 0, 0.963083, 12.6903, 17.6317, 0 )
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.133559, -10.5266, -10.7477 )
+modulate = Color( 0, 0, 0, 0.403922 )
+pixel_size = 0.08
+texture = ExtResource( 10 )
+
+[node name="Spatial" type="Spatial" parent="."]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -13, -12.714, 0 )
+
+[node name="Sprite3D3" type="Sprite3D" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.8654, 0, 0 )
+modulate = Color( 0, 0, 0, 0.960784 )
+pixel_size = 0.08
+texture = ExtResource( 10 )
+
+[node name="Sprite3D5" type="Sprite3D" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 121.882, 0, 0 )
+modulate = Color( 0, 0, 0, 0.960784 )
+pixel_size = 0.08
+texture = ExtResource( 10 )
+
+[node name="Sprite3D4" type="Sprite3D" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0 )
+modulate = Color( 0, 0, 0, 0.960784 )
+pixel_size = 0.08
+texture = ExtResource( 10 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Spatial"]
+autoplay = "move"
+anims/move = SubResource( 20 )
+
+[node name="Score" type="Label" parent="."]
+margin_left = 428.0
+margin_top = 533.0
+margin_right = 596.0
+margin_bottom = 598.0
+theme = ExtResource( 11 )
+custom_fonts/font = SubResource( 25 )
+text = "00"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 92.0
+margin_top = 758.0
+margin_right = 247.0
+margin_bottom = 864.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.277
+
+[node name="Label2" type="Label" parent="."]
+visible = false
+margin_left = 1697.0
+margin_top = 920.0
+margin_right = 1897.0
+margin_bottom = 940.0
+rect_pivot_offset = Vector2( 100, 10 )
+theme = ExtResource( 11 )
+custom_colors/font_color = Color( 1, 0.631373, 0.631373, 1 )
+text = "RECONECTANDO ..."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Label2")
+anims/RESET = SubResource( 27 )
+anims/ping = SubResource( 26 )

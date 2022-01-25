@@ -1,0 +1,221 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Assets2D/Game_HOCKEY/barra_yr.png" type="Texture" id=1]
+[ext_resource path="res://Assets2D/Game_HOCKEY/barra_xr.png" type="Texture" id=2]
+[ext_resource path="res://Assets2D/Game_HOCKEY/barra_xg.png" type="Texture" id=3]
+[ext_resource path="res://Assets2D/Game_HOCKEY/barra_yy.png" type="Texture" id=4]
+[ext_resource path="res://Assets2D/Game_HOCKEY/barra_yg.png" type="Texture" id=5]
+[ext_resource path="res://Assets2D/Game_HOCKEY/barra_xb.png" type="Texture" id=6]
+[ext_resource path="res://Assets2D/Game_HOCKEY/barra_yb.png" type="Texture" id=7]
+[ext_resource path="res://Assets2D/Game_HOCKEY/barra_xy.png" type="Texture" id=8]
+[ext_resource path="res://Assets2D/Game_HOCKEY/bg.png" type="Texture" id=9]
+[ext_resource path="res://Assets2D/Game_HOCKEY/luz.png" type="Texture" id=10]
+[ext_resource path="res://Assets2D/Game_HOCKEY/particles.tres" type="Material" id=12]
+
+[sub_resource type="CapsuleShape2D" id=2]
+height = 450.0
+
+[sub_resource type="CapsuleShape2D" id=3]
+custom_solver_bias = 0.845
+radius = 13.0
+height = 122.0
+
+[sub_resource type="SegmentShape2D" id=4]
+a = Vector2( 0, -300 )
+b = Vector2( 0, 300 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+spread = 104.12
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 378.41
+initial_velocity_random = 0.38
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 30.39
+scale = 0.2
+scale_random = 0.85
+
+[sub_resource type="SegmentShape2D" id=5]
+b = Vector2( 1024, 0 )
+
+[node name="Mesa" type="Node2D"]
+modulate = Color( 1.6, 1.6, 1.6, 1 )
+
+[node name="BackGround" type="Sprite" parent="."]
+position = Vector2( 512, 300 )
+scale = Vector2( 1.126, 1.19 )
+texture = ExtResource( 9 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+modulate = Color( 2, 2, 2, 0.1 )
+position = Vector2( 512, 300 )
+amount = 20
+speed_scale = 0.41
+visibility_rect = Rect2( -512, -300, 1024, 600 )
+process_material = ExtResource( 12 )
+texture = ExtResource( 10 )
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Area2DX" type="RigidBody2D" parent="Node2D"]
+position = Vector2( 38, 19 )
+mode = 1
+contacts_reported = 4
+contact_monitor = true
+
+[node name="Sprite" type="Sprite" parent="Node2D/Area2DX"]
+texture = ExtResource( 8 )
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2DX"]
+position = Vector2( 236, 12 )
+rotation = 1.5708
+shape = SubResource( 2 )
+
+[node name="Area2DY" type="RigidBody2D" parent="Node2D"]
+position = Vector2( 19, 38 )
+scale = Vector2( 1, 0.721 )
+mode = 1
+
+[node name="Sprite" type="Sprite" parent="Node2D/Area2DY"]
+texture = ExtResource( 4 )
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2DY"]
+position = Vector2( 13, 75 )
+shape = SubResource( 3 )
+one_way_collision_margin = 0.0
+
+[node name="Node2D2" type="Node2D" parent="."]
+position = Vector2( 1024, 0 )
+scale = Vector2( -1, 1 )
+
+[node name="Area2DX" type="RigidBody2D" parent="Node2D2"]
+position = Vector2( 38, 19 )
+mode = 1
+
+[node name="Sprite" type="Sprite" parent="Node2D2/Area2DX"]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D2/Area2DX"]
+position = Vector2( 236, 12 )
+rotation = 1.5708
+shape = SubResource( 2 )
+
+[node name="Area2DY" type="RigidBody2D" parent="Node2D2"]
+position = Vector2( 19, 38 )
+scale = Vector2( 1, 0.721 )
+mode = 1
+
+[node name="Sprite" type="Sprite" parent="Node2D2/Area2DY"]
+texture = ExtResource( 5 )
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D2/Area2DY"]
+position = Vector2( 13, 75 )
+shape = SubResource( 3 )
+
+[node name="Node2D3" type="Node2D" parent="."]
+position = Vector2( 1024, 600 )
+scale = Vector2( -1, -1 )
+
+[node name="Area2DX" type="RigidBody2D" parent="Node2D3"]
+position = Vector2( 38, 19 )
+mode = 1
+
+[node name="Sprite" type="Sprite" parent="Node2D3/Area2DX"]
+texture = ExtResource( 6 )
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D3/Area2DX"]
+position = Vector2( 236, 12 )
+rotation = 1.5708
+shape = SubResource( 2 )
+
+[node name="Area2DY" type="RigidBody2D" parent="Node2D3"]
+position = Vector2( 19, 38 )
+scale = Vector2( 1, 0.721 )
+mode = 1
+
+[node name="Sprite" type="Sprite" parent="Node2D3/Area2DY"]
+texture = ExtResource( 7 )
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D3/Area2DY"]
+position = Vector2( 13, 75 )
+shape = SubResource( 3 )
+
+[node name="Node2D4" type="Node2D" parent="."]
+position = Vector2( 0, 600 )
+scale = Vector2( 1, -1 )
+
+[node name="Area2DX" type="RigidBody2D" parent="Node2D4"]
+position = Vector2( 38, 19 )
+mode = 1
+
+[node name="Sprite" type="Sprite" parent="Node2D4/Area2DX"]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D4/Area2DX"]
+position = Vector2( 236, 12 )
+rotation = 1.5708
+shape = SubResource( 2 )
+
+[node name="Area2DY" type="RigidBody2D" parent="Node2D4"]
+position = Vector2( 19, 38 )
+scale = Vector2( 1, 0.721 )
+mode = 1
+
+[node name="Sprite" type="Sprite" parent="Node2D4/Area2DY"]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D4/Area2DY"]
+position = Vector2( 13, 75 )
+shape = SubResource( 3 )
+
+[node name="MetaP1" type="RigidBody2D" parent="."]
+position = Vector2( 0, 300 )
+mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MetaP1"]
+shape = SubResource( 4 )
+
+[node name="Particles2D" type="Particles2D" parent="MetaP1"]
+emitting = false
+amount = 40
+one_shot = true
+process_material = SubResource( 6 )
+texture = ExtResource( 10 )
+
+[node name="MetaP2" type="RigidBody2D" parent="."]
+position = Vector2( 1024, 300 )
+mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MetaP2"]
+shape = SubResource( 4 )
+
+[node name="Particles2D" type="Particles2D" parent="MetaP2"]
+rotation = 3.14159
+emitting = false
+amount = 40
+one_shot = true
+process_material = SubResource( 6 )
+texture = ExtResource( 10 )
+
+[node name="limite" type="RigidBody2D" parent="."]
+mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="limite"]
+shape = SubResource( 5 )
+
+[node name="limite2" type="RigidBody2D" parent="."]
+mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="limite2"]
+position = Vector2( 0, 600 )
+shape = SubResource( 5 )

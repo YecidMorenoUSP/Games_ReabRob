@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/placing_puck.ogg-7209b1341500d097c53d5198a9809748.oggstr"
+
+[deps]
+
+source_file="res://Sounds/placing_puck.ogg"
+dest_files=[ "res://.import/placing_puck.ogg-7209b1341500d097c53d5198a9809748.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

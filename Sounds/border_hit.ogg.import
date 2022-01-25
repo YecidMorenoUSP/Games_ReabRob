@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/border_hit.ogg-386aa834c368166840096d5f25551694.oggstr"
+
+[deps]
+
+source_file="res://Sounds/border_hit.ogg"
+dest_files=[ "res://.import/border_hit.ogg-386aa834c368166840096d5f25551694.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

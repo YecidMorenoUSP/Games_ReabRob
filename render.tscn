@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets3D/ufo/Ufo.tscn" type="PackedScene" id=1]
+
+[sub_resource type="ProceduralSky" id=1]
+
+[sub_resource type="Environment" id=2]
+background_mode = 3
+background_sky = SubResource( 1 )
+background_color = Color( 1, 1, 1, 1 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Ufo" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.850562, 0.0153812, -0.52565, -0.0180806, 0.999837, 0, 0.525564, 0.00950406, 0.850701, 0, 0, 0 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14.2946 )
+environment = SubResource( 2 )

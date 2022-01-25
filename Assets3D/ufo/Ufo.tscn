@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets3D/ufo/source/Ufo.fbx" type="PackedScene" id=1]
+[ext_resource path="res://Assets3D/ufo/source/Ufo.material" type="Material" id=3]
+
+[sub_resource type="Animation" id=2]
+resource_name = "Shake"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:rotation_degrees:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.100409, 5.66529, 0.100409, -5.66529, -11.4523, -0.0130402, 0, 0.0130402, 0, -3.92917, -0.0273843, 1.15741, 0.0273843, -1.15741, 0, -0.0573766, 11.1171, 0.0573766, -11.1171 ),
+"times": PoolRealArray( 0, 0.149962, 0.301227, 0.56855 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:rotation_degrees:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray(  ),
+"times": PoolRealArray(  )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath(".:rotation_degrees:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.0599847, -8.22361, 0.0599847, 8.22361, 17.4829, -0.0378164, -0.372982, 0.0378164, 0.372982, -13.7671, -0.0599847, 0.518175, 0.0599847, -0.518175, 8.80231, -0.0443365, -1.27916, 0.0443365, 1.27916, -1.03565, -0.0130401, 0.578703, 0.0130401, -0.578703 ),
+"times": PoolRealArray( 0, 0.142138, 0.271235, 0.412069, 0.505958 )
+}
+
+[node name="Ufo" instance=ExtResource( 1 )]
+transform = Transform( 0.999837, 0.0180806, 0, -0.0180806, 0.999837, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="RootNode" parent="." index="0"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
+
+[node name="Empty" parent="RootNode" index="0"]
+visible = false
+
+[node name="Empty001" parent="RootNode" index="1"]
+visible = false
+
+[node name="Empty002" parent="RootNode" index="2"]
+visible = false
+
+[node name="Empty003" parent="RootNode" index="3"]
+visible = false
+
+[node name="Empty004" parent="RootNode" index="4"]
+visible = false
+
+[node name="Empty005" parent="RootNode" index="5"]
+visible = false
+
+[node name="Empty006" parent="RootNode" index="6"]
+visible = false
+
+[node name="Cylinder" parent="RootNode" index="7"]
+material_override = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+anims/Shake = SubResource( 2 )

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/puck_hit1.ogg-a6f04282d63c698d46edb7a225b2dd2b.oggstr"
+
+[deps]
+
+source_file="res://Sounds/puck_hit1.ogg"
+dest_files=[ "res://.import/puck_hit1.ogg-a6f04282d63c698d46edb7a225b2dd2b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

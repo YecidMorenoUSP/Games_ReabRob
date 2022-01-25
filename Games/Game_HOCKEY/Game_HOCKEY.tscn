@@ -1,0 +1,458 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://Games/Game_HOCKEY/Actors/Player1.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Games/Game_HOCKEY/Actors/Mesa.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Games/Game_HOCKEY/Game_HOCKEY.gd" type="Script" id=3]
+[ext_resource path="res://Assets2D/Game_HOCKEY/ball.png" type="Texture" id=4]
+[ext_resource path="res://Games/Game_HOCKEY/Actors/controller_player.gd" type="Script" id=5]
+[ext_resource path="res://Games/Game_HOCKEY/Actors/Ball.gd" type="Script" id=6]
+[ext_resource path="res://Sounds/border_hit.wav" type="AudioStream" id=7]
+[ext_resource path="res://Sounds/goal.ogg" type="AudioStream" id=8]
+[ext_resource path="res://fonts/Game Played.otf" type="DynamicFontData" id=9]
+[ext_resource path="res://Games/Game_HOCKEY/Actors/Player2.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Games/Game_HOCKEY/Actors/Player.gd" type="Script" id=11]
+[ext_resource path="res://Sounds/Brasiiiil.wav" type="AudioStream" id=14]
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+background_color = Color( 0.156863, 0.780392, 0.117647, 1 )
+glow_enabled = true
+glow_levels/1 = true
+glow_levels/2 = true
+glow_levels/3 = false
+glow_intensity = 1.48
+glow_strength = 0.75
+glow_blend_mode = 1
+glow_hdr_threshold = 0.0
+glow_hdr_luminance_cap = 8.0
+glow_bicubic_upscale = true
+glow_high_quality = true
+
+[sub_resource type="PhysicsMaterial" id=3]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id=2]
+custom_solver_bias = 0.655
+radius = 41.5761
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1.1, 1.1, 1.1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "blur_0"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1.1, 1.1, 1.1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "blur_1"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 2, 2, 2, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=4]
+size = 10
+font_data = ExtResource( 9 )
+
+[sub_resource type="Animation" id=11]
+resource_name = "Finish"
+length = 12.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../../brasiiiil:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 12 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../Ball:RESET_BALL")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "FINISH" ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 6.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:rect_rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1, 2.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1440.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:custom_fonts/font:size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1, 2.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 10, 10, 70 ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_fonts/font:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 10 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../../goal:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../../brasiiiil:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "vortice"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_fonts/font:size")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 10, 80 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 720.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../../goal:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../../Ball:RESET_BALL")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../../Ball:RUN_BALL")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1.9 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:text")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "GOAL" ]
+}
+
+[sub_resource type="DynamicFont" id=7]
+size = 30
+font_data = ExtResource( 9 )
+
+[node name="Game" type="Node2D"]
+pause_mode = 2
+scale = Vector2( 1.9, 1.7 )
+script = ExtResource( 3 )
+
+[node name="Mesa" parent="." instance=ExtResource( 2 )]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+[node name="P2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 100, 300 )
+mass = 1.0
+physics_material_override = null
+gravity_scale = 0.0
+continuous_cd = 2
+contacts_reported = 2
+contact_monitor = true
+can_sleep = false
+linear_damp = 0.0
+angular_damp = 0.0
+applied_force = Vector2( 0, 100 )
+script = ExtResource( 11 )
+A_PI = 2000
+
+[node name="P1" parent="." instance=ExtResource( 10 )]
+position = Vector2( 910, 300 )
+continuous_cd = 1
+contacts_reported = 2
+contact_monitor = true
+can_sleep = false
+script = ExtResource( 11 )
+idx = 1
+
+[node name="Ball" type="RigidBody2D" parent="."]
+position = Vector2( 512, 300 )
+physics_material_override = SubResource( 3 )
+gravity_scale = 0.0
+continuous_cd = 1
+contacts_reported = 2
+contact_monitor = true
+can_sleep = false
+linear_damp = 0.0
+angular_damp = 0.0
+script = ExtResource( 6 )
+RESET_BALL = true
+RUN_BALL = true
+
+[node name="Sprite2" type="Sprite" parent="Ball"]
+modulate = Color( 1.1, 1.1, 1.1, 1 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Ball"]
+anims/RESET = SubResource( 8 )
+anims/blur_0 = SubResource( 10 )
+anims/blur_1 = SubResource( 9 )
+
+[node name="goal" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
+
+[node name="poom" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+
+[node name="brasiiiil" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 14 )
+
+[node name="Textos" type="Control" parent="."]
+modulate = Color( 1.2, 1.2, 1.2, 1 )
+margin_right = 1024.0
+margin_bottom = 600.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Goal" type="Label" parent="Textos"]
+visible = false
+margin_left = 312.0
+margin_top = 200.0
+margin_right = 712.0
+margin_bottom = 400.0
+rect_pivot_offset = Vector2( 200, 100 )
+custom_fonts/font = SubResource( 4 )
+text = "FINISH"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AA" type="AnimationPlayer" parent="Textos/Goal"]
+anims/Finish = SubResource( 11 )
+anims/RESET = SubResource( 5 )
+anims/vortice = SubResource( 6 )
+
+[node name="Score1" type="Label" parent="Textos"]
+margin_left = 409.0
+margin_top = 70.0
+margin_right = 509.0
+margin_bottom = 107.0
+custom_fonts/font = SubResource( 7 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score2" type="Label" parent="Textos"]
+margin_left = 517.0
+margin_top = 70.0
+margin_right = 617.0
+margin_bottom = 107.0
+custom_fonts/font = SubResource( 7 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ControllerPlayer" type="Node2D" parent="."]
+script = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="ControllerPlayer"]
+margin_left = 291.0
+margin_top = 453.0
+margin_right = 736.0
+margin_bottom = 536.0
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets2D/Game_HOCKEY/player2.png" type="Texture" id=1]
+
+[sub_resource type="PhysicsMaterial" id=2]
+friction = 0.0
+bounce = 0.89
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 46.0109
+
+[node name="Player1" type="RigidBody2D"]
+mode = 1
+physics_material_override = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 1.5, 1.5, 1.5, 1 )
+texture = ExtResource( 1 )
